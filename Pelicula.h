@@ -8,6 +8,6 @@ public:
 private:
 	int NumPeli, anio, duracion, cantActores;
 	std::string titulo, genero;
-	Actor listaActores;
+	Actor listaActores[10];
 };
 
