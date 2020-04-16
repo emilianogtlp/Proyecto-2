@@ -14,7 +14,7 @@ int main()
     Pelicula matrizPelicula[20];
     ifstream archivoActores;
     ifstream archivoPeliculas;
-    int ID,numPeli, anio, duracion,actordeid, cantactores;
+    int ID,numPeli, anio, duracion,actordeid=0, cantactores;
     string NombreActor, info_actores, genero, nombrepeli;
     archivoActores.open("actores.txt");
     archivoPeliculas.open("peliculas.txt");
@@ -43,16 +43,20 @@ int main()
             for (int p = 0; p < i; p++) {
                 if (ID == matrizActor[p].getId()) {
                     actordeid = p;
+                    matrizPelicula[l].addListaActores(matrizActor[actordeid]);
                 }
             }
-            matrizPelicula[l].addListaActores(matrizActor[actordeid]);
         }
         getline(archivoPeliculas, nombrepeli);
         //cout << nombrepeli << endl;
         matrizPelicula[l].setTitulo(nombrepeli);
         l++;
     }
-    cout << matrizPelicula[1].getTitulo();
+    cout << matrizPelicula[1].getListaActores(1).getNombre();
+
+
+    archivoActores.close();
+    archivoPeliculas.close();
     return 0;
 }
 

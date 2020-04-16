@@ -25,7 +25,7 @@ Pelicula::Pelicula(int numpeli, int a, int dur, int cantia, std::string titu, st
 
 Actor Pelicula::getListaActores(int num)
 {
-	return listaActores[num-1];
+	return listaActores[num];
 }
 
 int Pelicula::getNumPeli()

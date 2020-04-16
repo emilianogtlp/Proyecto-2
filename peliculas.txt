@@ -1,5 +1,5 @@
 472 2013 180 Drama 2 87 73 El Lobo de Wall Street
-627 2012 122 Drama 2 53 29 Los Juegos del Destino
+627 2012 122 Drama 3 53 15 29 Los Juegos del Destino
 635 2003 200 Aventuras 3 34 75 47 El Señor de los Anillos
 246 2012 158 Drama 3 17 23 48 Los Miserables
 545 1997 195 Drama 2 87 12 Titanic
