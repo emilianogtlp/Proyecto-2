@@ -12,6 +12,7 @@ public:
 	int getAnio();
 	int getDuracion();
 	std::string getGenero();
+	int getCantActores();
 
 	// metodos de modificacion //
 	void setNumPeli(int numpeli);

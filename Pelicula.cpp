@@ -53,6 +53,11 @@ std::string Pelicula::getGenero()
 	return genero;
 }
 
+int Pelicula::getCantActores()
+{
+	return cantActores;
+}
+
 void Pelicula::setNumPeli(int numpeli)
 {
 	NumPeli = numpeli;
@@ -87,24 +92,29 @@ bool Pelicula::addListaActores(Actor act)
 			if ((act.getId() == listaActores[i].getId()) && ejecutador == 1)
 			{
 				ejecutador = 0;
+				//std::cout << "El actor ya se encuentra registrado." << std::endl;
 				return false;
 			}
 			if ((act.getId() != listaActores[i].getId()) && ejecutador == 1 && listaActores[i].getId() == 0) {
 				listaActores[i].setId(act.getId());
 				listaActores[i].setNombre(act.getNombre());
 				ejecutador = 0;
+				cantActores = cantActores + 1;
+				//std::cout << "Actor agregado exitosamente" << std::endl;
 				return true;
 			}
 		}
 	}
 	if (cantActores == 10)
 	{
+		//std::cout << "La lista de actores se encuentra llena." << std::endl;
 		return false;
 	}
 	if (cantActores == 0)
 	{
 		listaActores[0].setId(act.getId());
 		listaActores[0].setNombre(act.getNombre());
+		cantActores = cantActores + 1;
 		return true;
 	}
 }
