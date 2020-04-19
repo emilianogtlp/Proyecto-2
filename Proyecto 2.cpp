@@ -68,16 +68,26 @@ int main()
         while (validador == 0)
         {
             for (int o = 0; o < l; o++) {
+                for (int j = 0; j < e; j++) {
+                    while (numPeli == matrizFuncion[j].getNumPeli()) {
+                        cout << "Numero de pelicula repetido: " << endl;
+                        cin >> numPeli;
+                        validador = 2;
+                    }
+                }
                 if (numPeli == matrizPelicula[o].getNumPeli()) {
                     validador = 1;
-                    cout << "Numero de pelicula valido..." << endl;
+                   // cout << "Numero de pelicula valido..." << endl;
+                    matrizFuncion[e].setNumPeli(numPeli);
                 }
             }
-            if (validador == 0) {
+            if (validador < 1) {
                 cout << "El numero de pelicula es invalido, intente ingresar uno distinto: " << endl;
                 cin >> numPeli;
             }
+            
         }
+        validador = 0;
         cout << "Ingrese la hora (formato 24hrs) y minuto de la funcion " << e + 1 << " porfavor: " << endl;
         cin >> hora;
         cin >> min;
@@ -90,7 +100,6 @@ int main()
         cout << "Porfavor ingrese el numero de sala: " << endl;
         cin >> sala;
         matrizFuncion[e].setCveFuncion(cvefun);
-        matrizFuncion[e].setNumPeli(numPeli);
         matrizFuncion[e].setHora(horafun);
         matrizFuncion[e].setSala(sala);
     }
