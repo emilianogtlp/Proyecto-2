@@ -14,13 +14,15 @@ int main()
     Pelicula matrizPelicula[20];
     ifstream archivoActores;
     ifstream archivoPeliculas;
-    int ID,numPeli, anio, duracion,actordeid=0, cantactores;
-    string NombreActor, info_actores, genero, nombrepeli;
+    int ID,numPeli, anio, duracion, cantactores,numfuning,sala;
+    string NombreActor, info_actores, genero, nombrepeli, cvefun;
+    int hora,min, validador=0;
     archivoActores.open("actores.txt");
     archivoPeliculas.open("peliculas.txt");
     while (getline(archivoActores, info_actores)) {
         ID = stoi(info_actores);
         //pedir explicacion de esta funcion...
+        // Usar metedo while y despues getline 
         info_actores.erase(remove_if(begin(info_actores), end(info_actores), 
             [](auto ch) {return isdigit(ch); }), info_actores.end());
         matrizActor[i].setId(ID);
@@ -42,8 +44,7 @@ int main()
             archivoPeliculas >> ID;
             for (int p = 0; p < i; p++) {
                 if (ID == matrizActor[p].getId()) {
-                    actordeid = p;
-                    matrizPelicula[l].addListaActores(matrizActor[actordeid]);
+                    matrizPelicula[l].addListaActores(matrizActor[p]);
                 }
             }
         }
@@ -52,7 +53,48 @@ int main()
         matrizPelicula[l].setTitulo(nombrepeli);
         l++;
     }
-    cout << matrizPelicula[1].getListaActores(1).getNombre();
+    cout << "Cuantas funciones desea igresar (Maximo 20): " << endl;
+    cin >> numfuning;
+    while (numfuning>20)
+    {
+        cout << "El numero de funciones no debe superar el 20, porfavor ingrese otro valor: " << endl;
+        cin >> numfuning;
+    }
+    for (int e = 0; e < numfuning; e++) {
+        cout << "Ingrese la clave para la funcion " << e + 1 << " porfavor: " << endl;
+        cin >> cvefun;
+        cout << "Ingrese el numero de pelicula para la funcion " << e + 1 << " porfavor: " << endl;
+        cin >> numPeli;
+        while (validador == 0)
+        {
+            for (int o = 0; o < l; o++) {
+                if (numPeli == matrizPelicula[o].getNumPeli()) {
+                    validador = 1;
+                    cout << "Numero de pelicula valido..." << endl;
+                }
+            }
+            if (validador == 0) {
+                cout << "El numero de pelicula es invalido, intente ingresar uno distinto: " << endl;
+                cin >> numPeli;
+            }
+        }
+        cout << "Ingrese la hora (formato 24hrs) y minuto de la funcion " << e + 1 << " porfavor: " << endl;
+        cin >> hora;
+        cin >> min;
+        while (hora > 23 || hora < 0 || min > 59 || min < 0) {
+            cout << "Se ingreso una hora invalida, porfavor intentelo de nuevo: " << endl;
+            cin >> hora;
+            cin >> min;
+        }
+        Hora horafun(hora, min);
+        cout << "Porfavor ingrese el numero de sala: " << endl;
+        cin >> sala;
+        matrizFuncion[e].setCveFuncion(cvefun);
+        matrizFuncion[e].setNumPeli(numPeli);
+        matrizFuncion[e].setHora(horafun);
+        matrizFuncion[e].setSala(sala);
+    }
+    matrizFuncion[0].getHora().mostrarhora();
 
 
     archivoActores.close();

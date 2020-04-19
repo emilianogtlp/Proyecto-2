@@ -31,3 +31,15 @@ int Hora::getMm()
 {
 	return mm;
 }
+
+void Hora::mostrarhora()
+{
+	if (mm < 10) {
+		std::cout << hh << ":0" << mm << std::endl;
+	}
+	if (mm == 0) {
+		std::cout << hh << ":" << mm << "0" << std::endl;
+	}
+	std::cout << hh << ":" << mm << std::endl;
+	
+}
