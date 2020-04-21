@@ -107,7 +107,9 @@ int main()
         }
         validador = 0;
         cout << "Ingrese la hora (formato 24hrs) y minuto de la funcion " << e + 1 << " porfavor: " << endl;
+        cout << "Hora: ";
         cin >> hora;
+        cout << "Minutos: ";
         cin >> min;
         while (hora > 23 || hora < 0 || min > 59 || min < 0) {
             cout << "Se ingreso una hora invalida, porfavor intentelo de nuevo: " << endl;
@@ -184,11 +186,15 @@ int main()
 
         case 4:
             cout << "Ingrese la hora y despues los minutos: " << endl;
+            cout << "Hora: ";
             cin >> hora;
+            cout << "Minutos: ";
             cin >> min;
             while (hora > 23 || hora < 0 || min > 59 || min < 0) {
                 cout << "Se ingreso una hora invalida, porfavor intentelo de nuevo: " << endl;
+                cout << "Hora: ";
                 cin >> hora;
+                cout << "Minutos: ";
                 cin >> min;
             }
             horamenu.setHh(hora); horamenu.setMm(min);
@@ -214,7 +220,14 @@ int main()
                         for (int np = 0; np < l; np++) {
                             if (matrizFuncion[w].getNumPeli() == matrizPelicula[np].getNumPeli()) {
                                 cout << "Titulo: " << matrizPelicula[np].getTitulo();
-                                cout << "  Nuero de sala: " << matrizFuncion[w].getSala() << endl;
+                                cout << "  Numero de sala: " << matrizFuncion[w].getSala();
+                                cout << "  Hora: "; matrizFuncion[w].getHora().mostrarhora();
+                                cout << "  Duracion: " << matrizPelicula[np].getDuracion();
+                                cout << "  Genero:  " << matrizPelicula[np].getGenero() << endl;
+                                cout << "  Actores: " << endl;
+                                for (int hj = 0; hj < matrizPelicula[np].getCantActores(); hj++) {
+                                    cout << matrizPelicula[np].getListaActores(hj).getNombre() << endl;
+                                }
                                 validarcve = 1;
                             }
                         }
