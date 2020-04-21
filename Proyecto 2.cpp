@@ -15,7 +15,9 @@ int main()
     ifstream archivoActores;
     ifstream archivoPeliculas;
     int ID,numPeli, anio, duracion, cantactores,numfuning,sala, respuesta, compsala=0, compcve =0;
+    int validarcve = 0, validarid = 0;
     string NombreActor, info_actores, genero, nombrepeli, cvefun;
+    Hora horamenu;
     int hora,min, validador=0;
     archivoActores.open("actores.txt");
     archivoPeliculas.open("peliculas.txt");
@@ -181,15 +183,73 @@ int main()
             break;
 
         case 4:
+            cout << "Ingrese la hora y despues los minutos: " << endl;
+            cin >> hora;
+            cin >> min;
+            while (hora > 23 || hora < 0 || min > 59 || min < 0) {
+                cout << "Se ingreso una hora invalida, porfavor intentelo de nuevo: " << endl;
+                cin >> hora;
+                cin >> min;
+            }
+            horamenu.setHh(hora); horamenu.setMm(min);
+            for (int a = 0; a < numfuning; a++) {
+                if (horamenu.getHh() == matrizFuncion[a].getHora().getHh() && horamenu.getMm() == matrizFuncion[a].getHora().getMm()) {
+                    for (int np = 0; np < l; np++) {
+                        if (matrizFuncion[a].getNumPeli() == matrizPelicula[np].getNumPeli()) {
+                            cout << "Titulo: "<<matrizPelicula[np].getTitulo();
+                            cout << "  Nuero de sala: " << matrizFuncion[a].getSala() << endl;
+                        }
+                    }
+                }
+            }
             
             break;
 
         case 5:
-
+            cout << "Ingrese un clave de funcion: " << endl;
+            cin >> cvefun;
+            while (validarcve == 0) {
+                for (int w = 0; w < numfuning; w++) {
+                    if (cvefun == matrizFuncion[w].getCveFuncion()) {
+                        for (int np = 0; np < l; np++) {
+                            if (matrizFuncion[w].getNumPeli() == matrizPelicula[np].getNumPeli()) {
+                                cout << "Titulo: " << matrizPelicula[np].getTitulo();
+                                cout << "  Nuero de sala: " << matrizFuncion[w].getSala() << endl;
+                                validarcve = 1;
+                            }
+                        }
+                    }
+                }
+                if (validarcve == 0) {
+                    cout << "Ha ingresado una clave invalida, intentelo de nuevo: " << endl;
+                    cin >> cvefun;
+                    validarcve = 0;
+                }
+            }
+            validarcve = 0;
             break;
 
         case 6:
-
+            cout << "Ingrese el ID de un actor: " << endl;
+            cin >> ID;
+            while (validarid == 0) {
+                for (int b = 0; b < l; b++)
+                {
+                    for (int e = 0; e < matrizPelicula[b].getCantActores() ; e++)
+                    {
+                        if (ID == matrizPelicula[b].getListaActores(e).getId())
+                        {
+                            cout << "Titulo: " << matrizPelicula[b].getTitulo() << "  Anio: " << matrizPelicula[b].getAnio() << endl;
+                            validarid = 1;
+                        }
+                    }
+                }
+                if(validarid == 0) {
+                    cout << "Ha ingresado un ID invalido, intentelo de nuevo porfavor: " << endl;
+                    cin >> ID;
+                }
+            }
+            validarid = 0;
             break;
 
         case 7:

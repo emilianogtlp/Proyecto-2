@@ -9,7 +9,7 @@ Pelicula::Pelicula()
 	cantActores = 0;
 	titulo = "";
 	genero = "";
-	listaActores[10];
+	listaActores[9]; //si hay errores revertir a 10
 }
 
 Pelicula::Pelicula(int numpeli, int a, int dur, int cantia, std::string titu, std::string gen)
