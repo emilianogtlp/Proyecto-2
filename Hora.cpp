@@ -34,12 +34,13 @@ int Hora::getMm()
 
 void Hora::mostrarhora()
 {
-	if (mm < 10) {
+	if (mm < 10 && mm != 0) {
 		std::cout << hh << ":0" << mm << std::endl;
 	}
 	if (mm == 0) {
 		std::cout << hh << ":" << mm << "0" << std::endl;
 	}
-	std::cout << hh << ":" << mm << std::endl;
-	
+	else {
+		std::cout << hh << ":" << mm << std::endl;
+	}
 }
