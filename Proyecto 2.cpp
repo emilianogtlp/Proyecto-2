@@ -158,7 +158,6 @@ int main()
                 cout << "ID: " << matrizActor[y].getId() << "   Nombre: " << matrizActor[y].getNombre() << endl;
             }
             break;
-
         case 2:
             for (int e = 0; e < l; e++) {
                 cout << "Titulo: " << matrizPelicula[e].getTitulo() << "  Anio: " << matrizPelicula[e].getAnio();
@@ -170,7 +169,6 @@ int main()
                 }
             }
             break;
-
         case 3:
             for (int m = 0; m < numfuning; m++) {
                 cout << "Clave: " << matrizFuncion[m].getCveFuncion() << "  Nombre: ";
@@ -183,7 +181,6 @@ int main()
                 matrizFuncion[m].getHora().mostrarhora();
             }
             break;
-
         case 4:
             cout << "Ingrese la hora y despues los minutos: " << endl;
             cout << "Hora: ";
@@ -208,9 +205,7 @@ int main()
                     }
                 }
             }
-            
             break;
-
         case 5:
             cout << "Ingrese un clave de funcion: " << endl;
             cin >> cvefun;
@@ -241,7 +236,6 @@ int main()
             }
             validarcve = 0;
             break;
-
         case 6:
             cout << "Ingrese el ID de un actor: " << endl;
             cin >> ID;
@@ -264,17 +258,15 @@ int main()
             }
             validarid = 0;
             break;
-
         case 7:
             validador = 1;
             break;
         default:
-            
+            cout << "Opcion no valida" << endl;
             break;
         }
 
     }
-
     archivoActores.close();
     archivoPeliculas.close();
     return 0;
